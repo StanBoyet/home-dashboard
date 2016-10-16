@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/helios-technologies/skeleton-rails
+  revision: 6e46649d29006643b33c95b82bc9d0e28df2f8cc
+  specs:
+    skeleton-rails (1.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -75,7 +81,6 @@ GEM
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
-    milligram (1.1.0.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -174,11 +179,11 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
-  milligram
   pg (~> 0.18)
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   sass-rails (~> 5.0)
+  skeleton-rails!
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)

@@ -13,7 +13,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'slim-rails'
-gem 'milligram'
+gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-rails'
 
 
 group :development, :test do

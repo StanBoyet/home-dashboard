@@ -1,7 +1,7 @@
 .container
   - weather = @weathers.first
   .row
-    .column
+    .twelve.column
       .weather-main
         .main-temp
           span.main-temp-value = weather.temp.round
@@ -12,19 +12,24 @@
           .main-weekday = weather.time.to_formatted_s(:weekday)
 
   .row
-    - (@weathers - [@weathers.first]).each do |weather|
-      .column
-        ul
+    .twelve.column.weather-more
+      - (@weathers - [@weathers.first]).each do |weather|
+        .weather-below style="width: 33%; display: inline-block;"
+          .below-icon
+            = embedded_svg("#{weather.icon}.svg")
+          .below-detail
+            = weather.temp
+        /ul
           li = weather.time.to_formatted_s(:short)
           li = weather.temp
           li = weather.temp_min
           li = weather.temp_max
           li = weather.description.humanize
           li
-            = embedded_svg("#{weather.icon}.svg")
 
 
-  - @passes.each do |pass|
-    ul
-      li = "#{pass.time} minutes"
-      li = pass.stop
+
+    - @passes.each do |pass|
+      ul
+        li = "#{pass.time} minutes"
+        li = pass.stop
