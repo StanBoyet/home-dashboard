@@ -13,6 +13,8 @@ class DashboardsController < ApplicationController
     http_response = get_http_response(uri)
     if http_response.code == '200'
       response = JSON.parse(http_response.body)
+      # TODO
+      # @weather = Weather.new(response)
       timestamp = response['list'][0]['dt']
       time = Time.at(timestamp).to_datetime
       temp = response['list'][0]['main']['temp']
@@ -31,6 +33,8 @@ class DashboardsController < ApplicationController
 
     if http_response.code == '200'
       response = Hash.from_xml(http_response.body)
+      # TODO
+      # @passes = Buses::Pass.initialize_passes(response)
       next_passes = response['waitingtimes']
       @passes = []
       next_passes['waitingtime'].each do |pass|
