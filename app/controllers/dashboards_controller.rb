@@ -13,7 +13,8 @@ class DashboardsController < ApplicationController
     http_response = get_http_response(uri)
     if http_response.code == '200'
       response = JSON.parse(http_response.body)
-      @weather = Weather.from_api(response)
+      #@weather = Weather.from_api(response)
+      @weathers = Weather.next_n_from_api(3, response)
     else
       flash['error'] = 'Weather request failed'
     end
@@ -25,8 +26,6 @@ class DashboardsController < ApplicationController
 
     if http_response.code == '200'
       response = Hash.from_xml(http_response.body)
-      # TODO
-      # @passes = Buses::Pass.initialize_passes(response)
       @passes = Buses::Pass.passes_from_api(response)
     else
       flash['error'] = 'Bus request failed'

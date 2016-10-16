@@ -4,7 +4,7 @@ module Buses
 
     def initialize(time, stop)
       @time = time
-      @stom = stop
+      @stop = stop
     end
 
     def self.passes_from_api(api_response)

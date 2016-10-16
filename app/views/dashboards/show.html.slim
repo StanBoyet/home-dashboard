@@ -3,10 +3,12 @@
     li = "#{pass.time} minutes"
     li = pass.stop
 
-ul
-  li = @weather.time.to_formatted_s(:short)
-  li = @weather.temp
-  li = @weather.temp_min
-  li = @weather.temp_max
-  li
-    i class="owf owf-#{@weather.sky} owf-5x"
+- @weathers.each do |weather|
+  ul
+    li = weather.time.to_formatted_s(:short)
+    li = weather.temp
+    li = weather.temp_min
+    li = weather.temp_max
+    li = weather.description.humanize
+    li
+      = embedded_svg("#{weather.icon}.svg")
