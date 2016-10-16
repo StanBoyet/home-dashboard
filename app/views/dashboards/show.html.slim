@@ -1,14 +1,30 @@
-- @passes.each do |pass|
-  ul
-    li = "#{pass.time} minutes"
-    li = pass.stop
+.container
+  - weather = @weathers.first
+  .row
+    .column
+      .weather-main
+        .main-temp
+          span.main-temp-value = weather.temp.round
+          span.main-temp-celsius °
+        .weather-data
+          .main-icon = embedded_svg("#{weather.icon}.svg", class: 'svg-icon' )
+          .main-date = weather.time.to_formatted_s(:day_comma_month)
+          .main-weekday = weather.time.to_formatted_s(:weekday)
 
-- @weathers.each do |weather|
-  ul
-    li = weather.time.to_formatted_s(:short)
-    li = weather.temp
-    li = weather.temp_min
-    li = weather.temp_max
-    li = weather.description.humanize
-    li
-      = embedded_svg("#{weather.icon}.svg")
+  .row
+    - (@weathers - [@weathers.first]).each do |weather|
+      .column
+        ul
+          li = weather.time.to_formatted_s(:short)
+          li = weather.temp
+          li = weather.temp_min
+          li = weather.temp_max
+          li = weather.description.humanize
+          li
+            = embedded_svg("#{weather.icon}.svg")
+
+
+  - @passes.each do |pass|
+    ul
+      li = "#{pass.time} minutes"
+      li = pass.stop

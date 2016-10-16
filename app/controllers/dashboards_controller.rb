@@ -14,7 +14,7 @@ class DashboardsController < ApplicationController
     if http_response.code == '200'
       response = JSON.parse(http_response.body)
       #@weather = Weather.from_api(response)
-      @weathers = Weather.next_n_from_api(3, response)
+      @weathers = Weather.next_n_from_api(4, response)
     else
       flash['error'] = 'Weather request failed'
     end
