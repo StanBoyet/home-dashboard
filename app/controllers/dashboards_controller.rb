@@ -15,13 +15,7 @@ class DashboardsController < ApplicationController
       response = JSON.parse(http_response.body)
       # TODO
       # @weather = Weather.new(response)
-      timestamp = response['list'][0]['dt']
-      time = Time.at(timestamp).to_datetime
-      temp = response['list'][0]['main']['temp']
-      temp_min = response['list'][0]['main']['temp_min']
-      temp_max = response['list'][0]['main']['temp_max']
-      sky = response['list'][0]['weather'][0]['id']
-      @weather = Weather.new(time: time, temp_max: temp_max, temp_min: temp_min, temp: temp, sky: sky)
+      @weather = Weather.new(response)
     else
       flash['error'] = 'Weather request failed'
     end
