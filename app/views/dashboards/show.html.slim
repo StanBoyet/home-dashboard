@@ -1,5 +1,5 @@
+- weather = @weathers.first
 .container
-  - weather = @weathers.first
   .row
     .twelve.column
       .weather-main
@@ -10,18 +10,23 @@
           .main-icon
             /= image_tag("svgs/#{weather.icon}.svg")
             /= image_tag("svgs/02d.svg", class: 'svg-icon')
-            = embedded_svg("#{weather.icon}.svg", class: 'svg-icon' )
+            /= weather.icon
+            /= embedded_svg("#{weather.icon}.svg", class: 'svg-icon' )
+            i class="svg-icon icon-#{weather.icon}"
           .main-date = weather.time.to_formatted_s(:day_comma_month)
           .main-weekday = weather.time.to_formatted_s(:weekday)
 
+.container.weather-more--container
   .row
     .twelve.column.weather-more
       - (@weathers - [@weathers.first]).each do |weather|
-        .weather-below style="width: 33%; display: inline-block;"
+        .weather-below
+          .below-title
+            ' at 4pm
           .below-icon
             = embedded_svg("#{weather.icon}.svg")
           .below-detail
-            = weather.temp
+            = "#{weather.temp}°"
         /ul
           li = weather.time.to_formatted_s(:short)
           li = weather.temp
@@ -31,8 +36,10 @@
           li
 
 
-
-    - @passes.each do |pass|
-      ul
-        li = "#{pass.time} minutes"
-        li = pass.stop
+.container
+  .row
+    .twelve.column
+      - @passes.each do |pass|
+        ul
+          li = "#{pass.time} minutes"
+          li = pass.stop

@@ -10,7 +10,6 @@
       letter-spacing: -0.1em;
       margin-right: 0.1em;
       font-family: 'Yanone Kaffeesatz', sans-serif;
-
     }
     .main-temp-celsius {
       vertical-align: top;
@@ -23,12 +22,12 @@
   .weather-data {
     text-transform: uppercase;
     text-align: center;
+    padding-top: 40px;
     .svg-icon{
       display: block;
       margin: 0 auto;
-      fill: #3498db;
-      width: 10em;
-      height: 10em;
+      color: #3498db;
+      font-size: 10em;
       margin: -20px;
       margin-top: -25px;
       margin-bottom: -5px;
@@ -43,17 +42,34 @@
     }
   }
 }
-
-.weather-more {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  .below-icon, .below-detail {
-    text-align: center;
+.weather-more--container {
+  padding: 0;
+  background-color: #2d3336;
+  color: whitesmoke;
+  .weather-more {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    .below-icon, .below-detail {
+      text-align: center;
+      // display: inline-block;
+      width: 50%;
+    }
+    .below-icon {
+      fill: whitesmoke;
+      // margin-top: -20px
+    }
+    .below-detail {
+      // margin-top: -10px;
+      font-style: italic;
+    }
   }
-
-  .below-icon {
-    // height: 5rem;
-    // width: 5rem;
+  .weather-below {
+    // padding: 5px 0px;
+    &:first-child, &:nth-child(2) {
+      border-right: 1px solid #aaa;
+    }
+    width: 33%;
+    margin: auto;  /* Magic! */
   }
 }
