@@ -7,7 +7,10 @@
           span.main-temp-value = weather.temp.round
           span.main-temp-celsius °
         .weather-data
-          .main-icon = embedded_svg("#{weather.icon}.svg", class: 'svg-icon' )
+          .main-icon
+            /= image_tag("svgs/#{weather.icon}.svg")
+            /= image_tag("svgs/02d.svg", class: 'svg-icon')
+            = embedded_svg("#{weather.icon}.svg", class: 'svg-icon' )
           .main-date = weather.time.to_formatted_s(:day_comma_month)
           .main-weekday = weather.time.to_formatted_s(:weekday)
 
